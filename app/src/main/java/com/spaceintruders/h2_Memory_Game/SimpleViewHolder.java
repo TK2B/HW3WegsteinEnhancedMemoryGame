@@ -9,16 +9,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class SimpleViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView simpleTextView;
-    private ImageButton buttonOnItem;
+    private CustomButtonClass buttonOnItem;
 
     public SimpleViewHolder(View itemView) {
         super(itemView);
-        buttonOnItem = (ImageButton) itemView.findViewById(R.id.buttonInItem);
+        buttonOnItem = (CustomButtonClass) itemView.findViewById(R.id.buttonInItem);
     }
 
     public void bindData(CustomButtonClass viewModel) {
-        buttonOnItem.setImageResource(viewModel.getFrontImageID());
+        //buttonOnItem.setImageResource(viewModel.getFrontImageID());
+        buttonOnItem = viewModel.getwholeButtonClass();
     }
 }
 

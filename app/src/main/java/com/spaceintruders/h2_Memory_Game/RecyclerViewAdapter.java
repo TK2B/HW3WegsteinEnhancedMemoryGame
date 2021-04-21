@@ -12,7 +12,7 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter {
 
     private List<CustomButtonClass> models = new ArrayList<>();
-    //TODO nehme hier erstmal irgend ne Liste zum testen
+
 
     public RecyclerViewAdapter(List<CustomButtonClass> viewModels) {
         if (viewModels != null) {

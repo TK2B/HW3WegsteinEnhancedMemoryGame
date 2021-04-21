@@ -4,6 +4,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -44,6 +46,8 @@ import tyrantgit.explosionfield.ExplosionField;
 public class Game_Activity extends AppCompatActivity implements View.OnClickListener {
     // DECLARE UI ilements
     private GridLayout mygridLay;
+    private RecyclerView recycleview;
+    private RecyclerViewAdapter adapter;
     private TextView textTimer;
     private TextView txt_name;
     private TextView scoreDisplay;
@@ -56,6 +60,7 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
     // Declare Vars
     private int numberOfElements;
     private CustomButtonClass[] arrayOFButtons;
+    private List<CustomButtonClass> listOFButtons;
 
     private int[] buttonGraphicLocation;
     private int[]buttonGraphics;
@@ -82,6 +87,7 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
         bindUI();
         getmyDatafromIntent();
         start_one_game();
+        setMyRecylcer();
 
 
 
@@ -133,7 +139,7 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
 
         //TODO check if die lsite schon da
 
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(generateListwithButtons());
+
         }
 
 
@@ -162,11 +168,19 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
     public void bindUI(){
         // place to get elements
         mygridLay = (GridLayout) findViewById(R.id.gridLayout_gameActive);
+        recycleview = (RecyclerView) findViewById(R.id.recycler_gameActive);
+
         textTimer   = (TextView) findViewById(R.id.txt_timer);
         txt_name   = (TextView) findViewById(R.id.txt_name);
         scoreDisplay = (TextView) findViewById(R.id.ScoreView);
         //TODO Hardcoded Size remove
 
+    }
+    public void setMyRecylcer(){
+        listOFButtons = Arrays.asList(arrayOFButtons);
+        adapter = new RecyclerViewAdapter(listOFButtons);
+        recycleview.setLayoutManager(new GridLayoutManager(this, gridSize));
+        recycleview.setAdapter(adapter);
     }
 
     public void getmyDatafromIntent(){
@@ -265,6 +279,7 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
     }
 
     private List<CustomButtonClass> generateListwithButtons() {
+        // maybe not neccessary //TODO delet if unused
         List<CustomButtonClass> simpleModelList = Arrays.asList(arrayOFButtons);
 
         return simpleModelList;

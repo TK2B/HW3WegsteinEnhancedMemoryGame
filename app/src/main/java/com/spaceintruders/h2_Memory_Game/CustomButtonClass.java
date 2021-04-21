@@ -3,15 +3,9 @@ package com.spaceintruders.h2_Memory_Game;
 import android.content.Context;
 
 import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.Gravity;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.GridLayout;
-
-import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
-import androidx.appcompat.widget.AppCompatDrawableManager;
-
-import java.util.logging.LogRecord;
 
 public class CustomButtonClass extends Button {
     // Declare Vars
@@ -23,7 +17,6 @@ public class CustomButtonClass extends Button {
     protected boolean isMatched = false;
     protected Drawable front;
     protected Drawable back;
-
 
 
     public CustomButtonClass (Context context, int row_i, int colum_i, int frontImageID_i ){
@@ -75,5 +68,11 @@ public class CustomButtonClass extends Button {
 
         }
 
+    }
+    //TODO Test ob sich ein objet selbst wiedergeben kann
+    public CustomButtonClass getwholeButtonClass (){
+        CustomButtonClass myTHIS = this;
+        Log.e  ("myTHIS: ", myTHIS.toString());
+        return myTHIS;
     }
 }
