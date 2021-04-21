@@ -68,6 +68,18 @@ public class CustomButtonClass extends Button {
     public int getFrontImageID() {
         return frontImageID;
     }
+    ///TODO onyl for testing
+    public void setFrontImageID(int id ) {
+        frontImageID =id;
+    }
+
+
+    public void setBackground(int pick) {
+        Drawable ein = getResources().getDrawable(pick);
+
+        this.setBackground(ein);
+    }
+
 
     public void flip(){
         if (isMatched){
@@ -93,6 +105,7 @@ public class CustomButtonClass extends Button {
         Log.e  ("myTHIS: ", myTHIS.toString());
         return myTHIS;
     }
+
 
     private Drawable resize(Drawable image) {
         Bitmap b = ((BitmapDrawable)image).getBitmap();

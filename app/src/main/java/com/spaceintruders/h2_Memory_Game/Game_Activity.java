@@ -89,9 +89,6 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
         start_one_game();
         setMyRecylcer();
 
-
-
-
     }
 
     private void makeTimer (){
@@ -112,6 +109,13 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
             numberOfElements =nColums *nRows;
             // 4 extend if you want to split model view
             arrayOFButtons=new CustomButtonClass[numberOfElements];
+
+            // Build ArrayList with CHECK SIZE //TODO nicht schön aber zum testen ob list wie array genutzt werden kann
+            listOFButtons = new ArrayList<CustomButtonClass>();
+            for (int i = 0; i < numberOfElements; i++){
+                listOFButtons.add(new CustomButtonClass(this, i, i , R.drawable.img1));
+            }
+
             //TODO 4 performance just load Drawables you neeed
             //buttonGraphics = new int[numberOfElements/2];
             buttonGraphics =frontImagesReferences;
@@ -130,14 +134,17 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
                     temButton.setId(View.generateViewId());
                     temButton.setOnClickListener(this);
                     arrayOFButtons[r * nColums + c] = temButton;
+                    listOFButtons.set(r * nColums + c, temButton);
                     mygridLay.addView(temButton);
+
+                    // TODO delete if not working
 
                 }
 
 
             }
 
-        //TODO check if die lsite schon da
+
 
 
         }
@@ -147,16 +154,11 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
         //fill an Shuffel Cards (SWAP RAND SOTRE)
         Random rand = new Random();
         for (int i = 0  ; i < numberOfElements; i++){
-
             buttonGraphicLocation[i] = i % (numberOfElements/2);
-
         }
         for (int i = 0  ; i < numberOfElements; i++){
-
             int temp = buttonGraphicLocation[i];
-
             int swapIndex = rand.nextInt(numberOfElements);
-
             buttonGraphicLocation[i] =  buttonGraphicLocation[swapIndex];
             buttonGraphicLocation[swapIndex] = temp;
 
@@ -169,7 +171,6 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
         // place to get elements
         mygridLay = (GridLayout) findViewById(R.id.gridLayout_gameActive);
         recycleview = (RecyclerView) findViewById(R.id.recycler_gameActive);
-
         textTimer   = (TextView) findViewById(R.id.txt_timer);
         txt_name   = (TextView) findViewById(R.id.txt_name);
         scoreDisplay = (TextView) findViewById(R.id.ScoreView);
@@ -177,10 +178,10 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
 
     }
     public void setMyRecylcer(){
-        listOFButtons = Arrays.asList(arrayOFButtons);
-        adapter = new RecyclerViewAdapter(listOFButtons);
+        adapter = new RecyclerViewAdapter(this, listOFButtons);
         recycleview.setLayoutManager(new GridLayoutManager(this, gridSize));
         recycleview.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     public void getmyDatafromIntent(){

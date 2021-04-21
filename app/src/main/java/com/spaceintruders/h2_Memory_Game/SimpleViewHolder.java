@@ -1,9 +1,8 @@
 package com.spaceintruders.h2_Memory_Game;
 
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
+
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,8 +16,13 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindData(CustomButtonClass viewModel) {
-        //buttonOnItem.setImageResource(viewModel.getFrontImageID());
+        buttonOnItem.setBackground(viewModel.getFrontImageID());
+        Log.e ("try overhand objetzt", String.valueOf(viewModel.getwholeButtonClass()));
         buttonOnItem = viewModel.getwholeButtonClass();
+        Log.e ("buttonOnItem on view is now ", String.valueOf(buttonOnItem));
+
+
+
     }
 }
 

@@ -1,5 +1,6 @@
 package com.spaceintruders.h2_Memory_Game;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,19 +10,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter {
+public class RecyclerViewAdapter extends RecyclerView.Adapter  {
 
     private List<CustomButtonClass> models = new ArrayList<>();
 
 
-    public RecyclerViewAdapter(List<CustomButtonClass> viewModels) {
+    public RecyclerViewAdapter(Context context, List<CustomButtonClass> viewModels) {
         if (viewModels != null) {
             this.models.addAll(viewModels);
+
         }
     }
 
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
+
         return new SimpleViewHolder(view);
     }
 
