@@ -2,10 +2,14 @@ package com.spaceintruders.h2_Memory_Game;
 
 import android.content.Context;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.GridLayout.LayoutParams;
 
 public class CustomButtonClass extends Button {
     // Declare Vars
@@ -18,9 +22,23 @@ public class CustomButtonClass extends Button {
     protected Drawable front;
     protected Drawable back;
 
+    public CustomButtonClass (Context context, AttributeSet set){
+        super(context, set);
+        Log.e ("inflate Constuctore" , "der andere");
 
+
+        // TODO Check if there is anything else i have todo is this constructor only used
+        back = context.getDrawable(R.drawable.back);
+        back = resize(back);
+        setBackground(back);
+
+
+
+    }
     public CustomButtonClass (Context context, int row_i, int colum_i, int frontImageID_i ){
+
         super(context);
+        Log.e ("mein Constuctore" , "jo" );
         row = row_i;
         colum = colum_i;
         frontImageID = frontImageID_i;
@@ -31,7 +49,7 @@ public class CustomButtonClass extends Button {
 
         setBackground(back);
 
-        GridLayout.LayoutParams tempParams = new GridLayout.LayoutParams(GridLayout.spec(row_i), GridLayout.spec(colum_i));
+        LayoutParams tempParams = new LayoutParams(GridLayout.spec(row_i), GridLayout.spec(colum_i));
         tempParams.width = (int) getResources().getDisplayMetrics().density * 80;
         tempParams.height = (int) getResources().getDisplayMetrics().density * 80;
         //tempParams.setGravity(Gravity.CENTER);
@@ -75,4 +93,11 @@ public class CustomButtonClass extends Button {
         Log.e  ("myTHIS: ", myTHIS.toString());
         return myTHIS;
     }
+
+    private Drawable resize(Drawable image) {
+        Bitmap b = ((BitmapDrawable)image).getBitmap();
+        Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 80, 80, false);
+        return new BitmapDrawable(getResources(), bitmapResized);
+    }
+
 }
