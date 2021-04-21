@@ -13,47 +13,36 @@
         android:id="@+id/txt_name"
         android:layout_width="315dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:layout_marginBottom="24dp"
         android:background="@color/cardview_shadow_end_color"
         android:foregroundGravity="fill_horizontal"
         android:gravity="center"
         android:text="Messeage "
         android:textColor="@color/primaryDarkColor"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/txt_timer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ScoreView" />
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="146dp" />
 
     <TextView
         android:id="@+id/txt_timer"
-        android:layout_width="0dp"
+        android:layout_width="247dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="73dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginBottom="48dp"
         android:gravity="center"
         android:textColor="@color/primaryTextColor"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout_gameActive"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/txt_name"
+        tools:layout_editor_absoluteX="82dp" />
 
     <TextView
         android:id="@+id/ScoreView"
-        android:layout_width="0dp"
+        android:layout_width="411dp"
         android:layout_height="63dp"
-        android:layout_marginTop="50dp"
         android:background="@color/primaryDarkColor"
         android:gravity="center"
         android:text="Score"
         android:textColor="@color/primaryTextColor"
-        app:layout_constraintBottom_toTopOf="@+id/txt_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txt_timer"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/stop_button"
@@ -61,34 +50,19 @@
         android:layout_height="wrap_content"
         android:onClick="endbutton"
         android:text="End Game"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/gridLayout_gameActive"
-        app:layout_constraintStart_toStartOf="@+id/gridLayout_gameActive" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="683dp" />
 
-    <GridLayout
-        android:id="@+id/gridLayout_gameActive"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:foregroundGravity="clip_horizontal|center|fill_vertical|center_horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/stop_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </GridLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_gameActive"
-        android:layout_width="217dp"
-        android:layout_height="161dp"
-        android:layout_marginEnd="160dp"
-        android:background="#18FFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:foregroundGravity="clip_horizontal|center|fill_vertical|center_horizontal"
         app:layout_constraintBottom_toTopOf="@+id/stop_button"
-        app:layout_constraintEnd_toEndOf="@+id/ScoreView"
         app:layout_constraintTop_toBottomOf="@+id/txt_name"
+        tools:layout_editor_absoluteX="186dp"
         tools:listitem="@layout/activity_item_for_recyc" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

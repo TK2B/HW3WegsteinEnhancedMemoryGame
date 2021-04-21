@@ -25,10 +25,13 @@ import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.Stack;
 import java.util.Timer;
@@ -82,6 +85,7 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
 
 
 
+
     }
 
     private void makeTimer (){
@@ -127,7 +131,9 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
 
             }
 
+        //TODO check if die lsite schon da
 
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(generateListwithButtons());
         }
 
 
@@ -256,5 +262,11 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
         buttonGraphicLocation = null ;
         buttonGraphics= null;
         start_one_game();
+    }
+
+    private List<CustomButtonClass> generateListwithButtons() {
+        List<CustomButtonClass> simpleModelList = Arrays.asList(arrayOFButtons);
+
+        return simpleModelList;
     }
 }
