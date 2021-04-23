@@ -110,7 +110,7 @@ public class CustomButtonClass extends androidx.appcompat.widget.AppCompatButton
 
     private Drawable resize(Drawable image) {
         Bitmap b = ((BitmapDrawable)image).getBitmap();
-        Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 80, 80, false);
+        Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 80, 90, false);
         return new BitmapDrawable(getResources(), bitmapResized);
     }
 

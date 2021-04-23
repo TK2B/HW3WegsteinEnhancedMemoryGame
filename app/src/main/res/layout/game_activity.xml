@@ -79,11 +79,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_gameActive"
-        android:layout_width="403dp"
-        android:layout_height="291dp"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
         android:layout_marginTop="49dp"
-        android:background="#18FFFF"
+        android:background="@color/cardview_shadow_end_color"
         android:foregroundGravity="clip_horizontal|center|fill_vertical|center_horizontal"
+        android:keepScreenOn="true"
+        android:nestedScrollingEnabled="true"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

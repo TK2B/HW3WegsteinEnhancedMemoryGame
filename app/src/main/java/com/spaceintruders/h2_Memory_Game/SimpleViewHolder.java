@@ -8,23 +8,27 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class SimpleViewHolder extends RecyclerView.ViewHolder {
+public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private CustomButtonClass buttonOnItem;
-    private static  Game dasSpie;
 
 
-    public SimpleViewHolder(View itemView, Game dasSpieldurchgereicht) {
+
+    public SimpleViewHolder(View itemView) {
         super(itemView);
-        dasSpie =dasSpieldurchgereicht;
-        buttonOnItem = (CustomButtonClass) itemView.findViewById(R.id.buttonInItem);
+
+        this.buttonOnItem = (CustomButtonClass) itemView.findViewById(R.id.buttonInItem);
+        itemView.setOnClickListener(this);
     }
 
     public void bindData(CustomButtonClass viewModel) {
-       // buttonOnItem.setBackground(viewModel.getFrontImageID());
+        //buttonOnItem.setBackground(viewModel.getFrontImageID());
         //Log.e ("try overhand objetzt", String.valueOf(viewModel.getwholeButtonClass().hashCode()));
+        buttonOnItem.setBackground(viewModel.getFrontImageID());
         buttonOnItem = viewModel.getwholeButtonClass();
-        buttonOnItem.setOnClickListener(dasSpie.getListener(itemView));
+
+        viewModel.setOnClickListener(this);
+
         Log.e ("buttonOnItem on view is now ", String.valueOf(buttonOnItem.hashCode()));
 
     }
@@ -32,8 +36,12 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.activity_item_for_recyc, parent, false);
 
-        return new SimpleViewHolder(view, dasSpie);
+        return new SimpleViewHolder(view);
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }
 

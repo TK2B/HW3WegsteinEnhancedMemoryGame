@@ -181,7 +181,7 @@ public class Game_Activity extends AppCompatActivity  {
     }
     public void setMyRecylcer(){
         listOFButtons = theGameLogic.newGameList();
-        adapter = new RecyclerViewAdapter(this, listOFButtons, theGameLogic);
+        adapter = new RecyclerViewAdapter(this, listOFButtons) ;
         recycleview.setAdapter(adapter);
         recycleview.setLayoutManager(new GridLayoutManager(this, gridSize));
         recycleview.hasFixedSize();

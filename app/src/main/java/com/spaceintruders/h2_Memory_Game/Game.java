@@ -3,6 +3,7 @@ package com.spaceintruders.h2_Memory_Game;
 import android.content.Context;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.TextView;
@@ -91,7 +92,7 @@ public class Game implements Serializable {
 
                 CustomButtonClass temButton = new CustomButtonClass(context, r, c, buttonGraphics[buttonGraphicLocation[r * gridSize + c]]);
                 temButton.setId(View.generateViewId());
-                temButton.setOnClickListener(getListener(view)); //TODO glaub das muss en view werden
+                temButton.setOnClickListener(theListener); //TODO glaub das muss en view werden
                 listOFButtons.set(r * gridSize + c, temButton);
 
             }
@@ -122,6 +123,7 @@ public class Game implements Serializable {
     View.OnClickListener getListener(View view){
     View.OnClickListener theListener = new View.OnClickListener(){
         public void onClick(View view) {
+            Log.e ("theListener over getListener", "isclicked");
 
             if (isBussy){
                 return;
@@ -191,6 +193,7 @@ public class Game implements Serializable {
 
     View.OnClickListener theListener = new View.OnClickListener(){
         public void onClick(View view) {
+            Log.e ("theListener", "isclicked");
 
             if (isBussy){
                 return;
