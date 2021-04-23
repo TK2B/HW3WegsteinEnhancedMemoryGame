@@ -5,31 +5,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter  {
+public class RecyclerViewAdapter extends RecyclerView.Adapter <SimpleViewHolder> {
 
     private List<CustomButtonClass> models = new ArrayList<>();
+    Game dasSpieldurchgereicht;
 
 
-    public RecyclerViewAdapter(Context context, List<CustomButtonClass> viewModels) {
+    public RecyclerViewAdapter(Context context, List<CustomButtonClass> viewModels, Game aktuellesSpiel) {
         if (viewModels != null) {
             this.models.addAll(viewModels);
+            this.dasSpieldurchgereicht = aktuellesSpiel;
 
         }
     }
-
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @Override
+    public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
 
-        return new SimpleViewHolder(view);
+        return new SimpleViewHolder(view, dasSpieldurchgereicht);
     }
 
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((SimpleViewHolder) holder).bindData(models.get(position));
+
+    public void onBindViewHolder(SimpleViewHolder holder, int position) {
+        holder.bindData(models.get(position));
     }
 
     public int getItemCount() {

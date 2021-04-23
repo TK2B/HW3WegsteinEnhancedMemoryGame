@@ -7,16 +7,16 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.Button;
+import android.view.View;
 import android.widget.GridLayout;
 import android.widget.GridLayout.LayoutParams;
 
-public class CustomButtonClass extends Button {
+public class CustomButtonClass extends androidx.appcompat.widget.AppCompatButton {
     // Declare Vars
     protected int row;
     protected int colum;
     protected int frontImageID;
-
+    View.OnClickListener theListener;
     protected boolean isFlipped = false;
     protected boolean isMatched = false;
     protected Drawable front;
@@ -24,7 +24,7 @@ public class CustomButtonClass extends Button {
 
     public CustomButtonClass (Context context, AttributeSet set){
         super(context, set);
-        Log.e ("inflate Constuctore" , "der andere");
+        Log.e ("inflate Constuctore" , String.valueOf(this.hashCode()));
 
 
         // TODO Check if there is anything else i have todo is this constructor only used
@@ -35,10 +35,11 @@ public class CustomButtonClass extends Button {
 
 
     }
+
     public CustomButtonClass (Context context, int row_i, int colum_i, int frontImageID_i ){
 
         super(context);
-        Log.e ("mein Constuctore" , "jo" );
+        Log.e ("mein Constuctore" , String.valueOf(this.hashCode()) );
         row = row_i;
         colum = colum_i;
         frontImageID = frontImageID_i;
@@ -76,7 +77,7 @@ public class CustomButtonClass extends Button {
 
     public void setBackground(int pick) {
         Drawable ein = getResources().getDrawable(pick);
-
+        ein = resize(ein);
         this.setBackground(ein);
     }
 
@@ -102,7 +103,7 @@ public class CustomButtonClass extends Button {
     //TODO Test ob sich ein objet selbst wiedergeben kann
     public CustomButtonClass getwholeButtonClass (){
         CustomButtonClass myTHIS = this;
-        Log.e  ("myTHIS: ", myTHIS.toString());
+        Log.e  ("myTHIS: ", String.valueOf(myTHIS.hashCode()));
         return myTHIS;
     }
 

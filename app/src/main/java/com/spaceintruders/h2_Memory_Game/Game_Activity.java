@@ -43,7 +43,7 @@ import tyrantgit.explosionfield.ExplosionField;
 
 // TODO extract Winning and Lose Methods and call them from wher you need it (redundance)
 
-public class Game_Activity extends AppCompatActivity implements View.OnClickListener {
+public class Game_Activity extends AppCompatActivity  {
     // DECLARE UI ilements
     private GridLayout mygridLay;
     private RecyclerView recycleview;
@@ -61,7 +61,7 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
     private int numberOfElements;
     private CustomButtonClass[] arrayOFButtons;
     private List<CustomButtonClass> listOFButtons;
-
+    private Game theGameLogic;
     private int[] buttonGraphicLocation;
     private int[]buttonGraphics;
     private int[] frontImagesReferences = {
@@ -84,9 +84,11 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
+
         bindUI();
         getmyDatafromIntent();
-        start_one_game();
+        theGameLogic = new Game(this, gridSize);
+        //start_one_game();
         setMyRecylcer();
 
     }
@@ -94,7 +96,7 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
     private void makeTimer (){
         //TODO Make Timer
     }
-
+    /*
     private void start_one_game() {
         // score to 0
         scoreDisplay.setText("Score " + Score);
@@ -148,8 +150,8 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
 
 
         }
-
-
+    */
+    /*
     private void shuffelButton() {
         //fill an Shuffel Cards (SWAP RAND SOTRE)
         Random rand = new Random();
@@ -165,7 +167,7 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
         }
 
     }
-
+    */
 
     public void bindUI(){
         // place to get elements
@@ -178,9 +180,11 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
 
     }
     public void setMyRecylcer(){
-        adapter = new RecyclerViewAdapter(this, listOFButtons);
-        recycleview.setLayoutManager(new GridLayoutManager(this, gridSize));
+        listOFButtons = theGameLogic.newGameList();
+        adapter = new RecyclerViewAdapter(this, listOFButtons, theGameLogic);
         recycleview.setAdapter(adapter);
+        recycleview.setLayoutManager(new GridLayoutManager(this, gridSize));
+        recycleview.hasFixedSize();
         adapter.notifyDataSetChanged();
     }
 
@@ -198,7 +202,7 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
 
     }
 
-
+    /*
     @Override
     public void onClick(View view) {
 
@@ -285,4 +289,6 @@ public class Game_Activity extends AppCompatActivity implements View.OnClickList
 
         return simpleModelList;
     }
+    */
+
 }
