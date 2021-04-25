@@ -23,11 +23,14 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.On
 
     public void bindData(CustomButtonClass viewModel) {
         //buttonOnItem.setBackground(viewModel.getFrontImageID());
-        //Log.e ("try overhand objetzt", String.valueOf(viewModel.getwholeButtonClass().hashCode()));
-        buttonOnItem.setBackground(viewModel.getFrontImageID());
-        buttonOnItem = viewModel.getwholeButtonClass();
+        Log.e ("try overhand objetzt", String.valueOf(viewModel.getwholeButtonClass().hashCode()));
+        //buttonOnItem.setBackground(viewModel.getFrontImageID());
+        CustomButtonClass temp = viewModel.getwholeButtonClass();
+        temp.flip();
+        buttonOnItem = temp;
 
-        viewModel.setOnClickListener(this);
+
+
 
         Log.e ("buttonOnItem on view is now ", String.valueOf(buttonOnItem.hashCode()));
 

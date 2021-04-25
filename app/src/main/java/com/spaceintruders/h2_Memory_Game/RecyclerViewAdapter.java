@@ -47,7 +47,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <SimpleViewHolder>
     public void onBindViewHolder(SimpleViewHolder holder, int position) {
         holder.bindData(models.get(position));
         //holder.v.setOnClickListener((models.get(position)).theListener); // https://antonioleiva.com/recyclerview-listener/
-        holder.itemView.setOnClickListener((View.OnClickListener) models.get(position).theListener);
+        //holder.itemView.setOnClickListener((View.OnClickListener) models.get(position).theListener);
     }
 
     public int getItemCount() {
