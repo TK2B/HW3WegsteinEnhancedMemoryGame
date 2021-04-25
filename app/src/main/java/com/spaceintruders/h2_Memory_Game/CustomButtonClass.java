@@ -21,6 +21,7 @@ public class CustomButtonClass extends androidx.appcompat.widget.AppCompatButton
     protected boolean isMatched = false;
     protected Drawable front;
     protected Drawable back;
+    protected OnClickListener derListenerindemButton;
 
     public CustomButtonClass (Context context, AttributeSet set){
         super(context, set);
@@ -112,6 +113,13 @@ public class CustomButtonClass extends androidx.appcompat.widget.AppCompatButton
         Bitmap b = ((BitmapDrawable)image).getBitmap();
         Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 80, 90, false);
         return new BitmapDrawable(getResources(), bitmapResized);
+    }
+
+    public void setTheListenerinButton (OnClickListener uebergabeListener){
+        this.derListenerindemButton = uebergabeListener;
+    }
+    public OnClickListener getTheListeneroutofdaButton (){
+        return this.derListenerindemButton;
     }
 
 }

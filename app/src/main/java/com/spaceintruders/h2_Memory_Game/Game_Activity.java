@@ -96,78 +96,7 @@ public class Game_Activity extends AppCompatActivity  {
     private void makeTimer (){
         //TODO Make Timer
     }
-    /*
-    private void start_one_game() {
-        // score to 0
-        scoreDisplay.setText("Score " + Score);
 
-        makeTimer();
-
-            // TODO Setup Game
-            // get size og Grid // set myself bevore just to make sure it fits
-            int nColums = mygridLay.getColumnCount();
-            int nRows = mygridLay.getRowCount();
-            // calc Elements
-            numberOfElements =nColums *nRows;
-            // 4 extend if you want to split model view
-            arrayOFButtons=new CustomButtonClass[numberOfElements];
-
-            // Build ArrayList with CHECK SIZE //TODO nicht schön aber zum testen ob list wie array genutzt werden kann
-            listOFButtons = new ArrayList<CustomButtonClass>();
-            for (int i = 0; i < numberOfElements; i++){
-                listOFButtons.add(new CustomButtonClass(this, i, i , R.drawable.img1));
-            }
-
-            //TODO 4 performance just load Drawables you neeed
-            //buttonGraphics = new int[numberOfElements/2];
-            buttonGraphics =frontImagesReferences;
-
-            buttonGraphicLocation =new int[numberOfElements];
-
-            shuffelButton();
-        for(
-            int r = 0;
-            r<nRows;r++)
-
-            {
-                for (int c = 0; c < nColums; c++) {
-
-                    CustomButtonClass temButton = new CustomButtonClass(this, r, c, buttonGraphics[buttonGraphicLocation[r * nColums + c]]);
-                    temButton.setId(View.generateViewId());
-                    temButton.setOnClickListener(this);
-                    arrayOFButtons[r * nColums + c] = temButton;
-                    listOFButtons.set(r * nColums + c, temButton);
-                    mygridLay.addView(temButton);
-
-                    // TODO delete if not working
-
-                }
-
-
-            }
-
-
-
-
-        }
-    */
-    /*
-    private void shuffelButton() {
-        //fill an Shuffel Cards (SWAP RAND SOTRE)
-        Random rand = new Random();
-        for (int i = 0  ; i < numberOfElements; i++){
-            buttonGraphicLocation[i] = i % (numberOfElements/2);
-        }
-        for (int i = 0  ; i < numberOfElements; i++){
-            int temp = buttonGraphicLocation[i];
-            int swapIndex = rand.nextInt(numberOfElements);
-            buttonGraphicLocation[i] =  buttonGraphicLocation[swapIndex];
-            buttonGraphicLocation[swapIndex] = temp;
-
-        }
-
-    }
-    */
 
     public void bindUI(){
         // place to get elements

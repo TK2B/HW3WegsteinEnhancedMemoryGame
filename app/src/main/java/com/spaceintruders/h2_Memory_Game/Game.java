@@ -92,7 +92,8 @@ public class Game implements Serializable {
 
                 CustomButtonClass temButton = new CustomButtonClass(context, r, c, buttonGraphics[buttonGraphicLocation[r * gridSize + c]]);
                 temButton.setId(View.generateViewId());
-                temButton.setOnClickListener(theListener); //TODO glaub das muss en view werden
+                //temButton.setOnClickListener(theListener); //TODO glaub das muss en view werden
+                temButton.setTheListenerinButton(theListener);
                 listOFButtons.set(r * gridSize + c, temButton);
 
             }

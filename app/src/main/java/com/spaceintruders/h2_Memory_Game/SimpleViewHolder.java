@@ -26,8 +26,10 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.On
         Log.e ("try overhand objetzt", String.valueOf(viewModel.getwholeButtonClass().hashCode()));
         //buttonOnItem.setBackground(viewModel.getFrontImageID());
         CustomButtonClass temp = viewModel.getwholeButtonClass();
-        temp.flip();
+
         buttonOnItem = temp;
+        buttonOnItem.setOnClickListener(viewModel.getTheListeneroutofdaButton()); // Not realy a workaorund
+
 
 
 
@@ -44,7 +46,9 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.On
 
     @Override
     public void onClick(View v) {
-
+        int position = getAdapterPosition();
+        // mOnClickListener.onListItemClick(position);
+        // only possilbe if you wirte Holder and Adapter in one file
     }
 }
 

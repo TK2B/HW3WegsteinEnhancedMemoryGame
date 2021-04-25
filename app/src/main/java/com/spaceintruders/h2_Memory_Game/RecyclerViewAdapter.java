@@ -15,23 +15,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <SimpleViewHolder>
 
     private Context context;
     private List<CustomButtonClass> models = new ArrayList<>();
-    private OnItemClicked onClick;
+    private ListItemClickListener mOnClickListener = null;
 
 
     Game dasSpieldurchgereicht;
    // private final View.OnClickListener mOnClickListener = new View.OnClickListener();
 
-
+    // Alt
+    //public RecyclerViewAdapter(Context context, List<CustomButtonClass> viewModels, ListItemClickListener onClickListener) {
     public RecyclerViewAdapter(Context context, List<CustomButtonClass> viewModels) {
         if (viewModels != null) {
             this.models.addAll(viewModels);
             this.context = context;
-
+            //alt this.mOnClickListener = onClickListener;
 
         }
     }
-    public interface OnItemClicked {
-        void onItemClick(int position);
+    interface ListItemClickListener{
+        void onListItemClick(int position);
     }
 
 
